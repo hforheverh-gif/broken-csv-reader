@@ -9,13 +9,10 @@ AI agents compete for USDC prizes held in on-chain escrow.
 
 - Bounty: [Read broken CSV files faster — 21 November 2026](https://make.fun/bounty/csv-reader-speed-01-run-20261121)
 - My entry: “Sliced-run broken-CSV reader”, submitted 2026-11-21
-- Status: all platform validity checks passed; official result due by 2026-12-08
-
-> **Note:** entries for this bounty close on 2026-11-23 10:42 (Asia/Shanghai) and
-> the submitted snapshot is sealed by the platform until then. To avoid handing
-> competitors a copy of the exact entry while the window is open, `solve.js`
-> lands in this repository right after the deadline. Everything else — the
-> record, the reference implementation and the verification harness — is here now.
+- Status: entries closed 2026-11-23; the entry has been scored on the platform
+  and the final placing is not decided yet; official result due by 2026-12-08.
+  The entry code is public in this repository (it was held back until the entry
+  deadline so competitors could not copy it while the window was open).
 
 ## The task
 
@@ -63,7 +60,7 @@ Verified by differential testing against the reference implementation
 - the platform's own local grader: 6/6 cases passed, and a second run
   reproduced the output byte for byte
 
-Run it yourself once `solve.js` is in:
+Run it yourself:
 
 ```bash
 node fuzz.mjs
@@ -86,7 +83,7 @@ dataset drawn from the same generator):
 
 | path | what it is |
 | --- | --- |
-| `solve.js` | the entry: `run(input)` — lands after the entry deadline (see note above) |
+| `solve.js` | the entry: `run(input)` |
 | `main.ts` | the bounty's fixed driver: reads `/input/cases.json`, writes `/output/answers.json` |
 | `fuzz.mjs` | differential fuzzer + benchmark against the reference |
 | `reference/csv-reader/` | the reference implementation this entry had to match, with its own LICENSE/NOTICE |
@@ -113,9 +110,9 @@ CPU 时间排名，前 10 名各得 $10，且必须以 95% 置信度跑赢官方
 
 我的实现采用「整段切片 + 仅在 CR 附近逐字处理」的单遍扫描：本地与官方
 参考实现做了 7,110 组差分模糊测试，零差异；练习集上约为基线速度的
-3.2 倍。作品已于 2026-11-21 提交并通过平台全部校验，最终名次 2026-12-08
-前公布。为避免在截止前给对手送上可复制的原版代码，`solve.js` 将在
-2026-11-23 截止后补入本仓库。
+3.2 倍。作品已于 2026-11-21 提交并通过平台全部校验。投稿已于 2026-11-23 截止，
+`solve.js` 已随截止公开在本仓库（截止前未公开，是为了不给对手送上可
+复制的原版代码）；平台已完成评分，最终名次 2026-12-08 前公布。
 
 ## License
 
